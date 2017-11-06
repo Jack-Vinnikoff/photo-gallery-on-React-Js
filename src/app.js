@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import LogicApp from './container.jsx';
 
 class App extends React.Component {
     render () {
         return (
-            <div>
-                <h1>Hello</h1>
+            <div className="field">
+                <LogicApp />
             </div>
         )
     }
