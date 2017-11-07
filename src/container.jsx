@@ -25,6 +25,7 @@ class LogicApp extends React.Component {
 
 
     render () {
+        console.log(223);
         const albums = this.state.albums;
         return (
             <div className="test">

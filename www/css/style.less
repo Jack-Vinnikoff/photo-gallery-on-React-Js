@@ -1,9 +1,11 @@
 .test {
   display: flex;
+  height: 600px;
   border: 1px solid red;
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
   justify-content: space-around;
+  align-items: flex-end;
 }
 
 .album {
@@ -13,3 +15,40 @@
   }
 
 }
+
+.modal-window {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  .bg-window {
+    opacity: 0.7;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+  .modal-window-form {
+    position: inherit;
+    background-color: wheat;
+    border: 1px solid blue;
+    opacity: 1;
+    z-index: 20;
+  }
+}
+.flex-outer {
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+}
+.flex-outer > li > label {
+  flex: 1 0 120px;
+  max-width:220px;
+}
+}
+

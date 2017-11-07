@@ -1,13 +1,37 @@
 .test {
   display: flex;
+  height: 600px;
   border: 1px solid red;
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
   justify-content: space-around;
+  align-items: flex-end;
 }
 .album {
   border: 1px solid black;
 }
 .album .album-name {
   text-align: center;
+}
+.modal-window {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.modal-window .bg-window {
+  opacity: 0.7;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.modal-window .modal-window-form {
+  position: inherit;
+  background-color: wheat;
+  border: 1px solid blue;
+  opacity: 1;
+  z-index: 20;
 }
