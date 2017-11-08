@@ -8,7 +8,9 @@ class LogicApp extends React.Component {
         super(props);
         this.state = {
             albums:[{id:1,name:'first Album',description:'this is me first Album'},{id:2,name:'second Album',
-            description:'this is my second Album'}],
+            description:'this is my second Album'},{id:3,name:'first Album',description:'this is me first Album'},{id:4,name:'second Album',
+                description:'this is my second Album'},{id:5,name:'first Album',description:'this is me first Album'},{id:6,name:'second Album',
+                description:'this is my second Album'}],
             isOpen:false
         }
     }
@@ -28,7 +30,7 @@ class LogicApp extends React.Component {
         console.log(223);
         const albums = this.state.albums;
         return (
-            <div className="test">
+            <div className="grid">
                 {albums.map((item)=>{
                     return <Album key={item.id}
                                   name={item.name}

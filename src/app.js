@@ -5,7 +5,8 @@ import LogicApp from './container.jsx';
 class App extends React.Component {
     render () {
         return (
-            <div className="field">
+            <div>
+                <div className="top"><span>Photo Gallery</span></div>
                 <LogicApp />
             </div>
         )
@@ -14,5 +15,5 @@ class App extends React.Component {
 
 ReactDom.render(
     <App />,
-    document.getElementById('app')
+    document.getElementById('container')
 );

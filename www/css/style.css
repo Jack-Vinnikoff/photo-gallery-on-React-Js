@@ -1,37 +1,39 @@
-.test {
-  display: flex;
-  height: 600px;
-  border: 1px solid red;
-  flex-direction: row-reverse;
-  flex-wrap: wrap-reverse;
-  justify-content: space-around;
-  align-items: flex-end;
-}
-.album {
-  border: 1px solid black;
-}
-.album .album-name {
-  text-align: center;
-}
-.modal-window {
-  position: absolute;
-  display: flex;
+.top {
+  background-color: black;
   width: 100%;
-  height: 100%;
+  max-width: 960px;
+  min-width: 360px;
+  min-height: 100px;
+  margin: 0 auto 40px;
+  border: 1px solid black;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.modal-window .bg-window {
-  opacity: 0.7;
-  background-color: black;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
+.top span {
+  font-size: 40px;
+  align-text: center;
+  color: white;
 }
-.modal-window .modal-window-form {
-  position: inherit;
-  background-color: wheat;
-  border: 1px solid blue;
-  opacity: 1;
-  z-index: 20;
+.grid {
+  width: 100%;
+  max-width: 960px;
+  min-width: 360px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+.grid .album-item {
+  background-color: black;
+  min-height: 200px;
+  font-size: 30px;
+  color: white;
+  margin: 0 10px 20px;
+  flex: 1 1 calc(5%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
