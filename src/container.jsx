@@ -10,7 +10,10 @@ class LogicApp extends React.Component {
             albums:[{id:1,name:'first Album',description:'this is me first Album'},{id:2,name:'second Album',
             description:'this is my second Album'},{id:3,name:'first Album',description:'this is me first Album'},{id:4,name:'second Album',
                 description:'this is my second Album'},{id:5,name:'first Album',description:'this is me first Album'},{id:6,name:'second Album',
-                description:'this is my second Album'}],
+                description:'this is my second Album'},{id:5,name:'first Album',description:'this is me first Album'},{id:6,name:'second Album',
+            description:'this is my second Album'},{id:5,name:'first Album',description:'this is me first Album'},{id:6,name:'second Album',
+    description:'this is my second Albumasdsad  dsaas asd asas sd asdas adas asds sad '},{id:5,name:'first Album',description:'this is me first Album'},{id:6,name:'second Album',
+                description:'this is my second Albumasdsad  dsaas asd asas sd asdas adas asds sad '}],
             isOpen:false
         }
     }

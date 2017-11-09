@@ -6,8 +6,9 @@ class NewAlbum extends React.Component {
     render() {
         return (
             <div className="create-album">
-                <button onClick={this.props.click}>+</button>
-
+                <div className="bg-box">
+                    <button onClick={this.props.click}className="create-album-btn" >+</button>
+                </div>
             </div>
         )
     }
