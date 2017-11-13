@@ -33,7 +33,7 @@ class FormNewAlbum extends React.Component {
                             ></textarea>
                         </li>
                         <li>
-                            <button>Done</button>
+                            <button onClick={this.props.finished}>Done</button>
                         </li>
                         <li>
                             <button>Cancel</button>

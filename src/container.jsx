@@ -10,7 +10,8 @@ class LogicApp extends React.Component {
             albums:[{id:1,name:'first Album',description:'this is me first Album'}],
             isOpen:false,
             albumName:'Gogi',
-            albumDescription:'Hello'
+            albumDescription:'Hello',
+            errors:false
         }
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -34,6 +35,8 @@ class LogicApp extends React.Component {
         this.setState({albumDescription: event.target.value})
         console.log(this.state.albumDescription);
     }
+
+
 
     createAlbum () {
         this.setState({isOpen:!this.state.isOpen});
