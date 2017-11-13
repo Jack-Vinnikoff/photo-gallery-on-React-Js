@@ -7,24 +7,32 @@ class LogicApp extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            albums:[{id:1,name:'first Album',description:'this is me first Album'},
-                {id:2,name:'second Album',description:'this is my second Album'},
-                {id:3,name:'first Album',description:'this is me first Album'},
-                {id:4,name:'second Album', description:'this is my second Album'},
-                {id:5,name:'first Album',description:'this is me first Album'},
-                {id:6,name:'second Album', description:'this is my second Album'},
-                {id:7,name:'first Album',description:'this is me first Album'},
-                {id:8,name:'second Album',description:'this is my second Album'},
-                {id:9,name:'first Album',description:'this is me first Album'},
-                {id:10,name:'second Album',description:'this is my second Albumasdsad  dsaas asd asas sd asdas adas asds sad '},
-                {id:11,name:'first Album',description:'this is me first Album'},
-                {id:12,name:'second Album', description:'this is my second Albumasdsad  dsaas asd asas sd asdas adas asds sad '}],
-            isOpen:false
+            albums:[{id:1,name:'first Album',description:'this is me first Album'}],
+            isOpen:false,
+            albumName:'Gogi',
+            albumDescription:'Hello'
         }
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     }
 
-    test() {
-        alert(23);
+    handleNameChange(event){
+        console.log(event.target.value);
+        this.setState({albumName:event.target.value})
+        this.state.albums.forEach((item) => {
+            let nameAlbum=item.name.toLowerCase();
+            if(nameAlbum === event.target.value.toLowerCase()) {
+                alert('double Name');
+            }
+            console.log(event.target.value);
+            console.log(nameAlbum);
+        })
+    }
+
+    handleDescriptionChange(event) {
+        console.log(event.target.value);
+        this.setState({albumDescription: event.target.value})
+        console.log(this.state.albumDescription);
     }
 
     createAlbum () {
@@ -48,7 +56,12 @@ class LogicApp extends React.Component {
                 <NewAlbum
                     click = {this.createAlbum.bind(this)}
                 />
-                {this.state.isOpen ?<FormNewAlbum />:''}
+                {this.state.isOpen ?<FormNewAlbum
+                        nameAlbum={this.state.albumName}
+                        description={this.state.albumDescription}
+                        onChangeName={this.handleNameChange}
+                        onChangeDescription={this.handleDescriptionChange}
+                    />:''}
 
             </div>
         )

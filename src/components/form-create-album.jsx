@@ -1,6 +1,7 @@
 import React from 'react';
 
 class FormNewAlbum extends React.Component {
+
     render() {
         return (
             <div className="modal-window">
@@ -11,12 +12,25 @@ class FormNewAlbum extends React.Component {
 
                     <ul className="flex-outer">
                         <li>
-                            <label for="album-name">Album Name</label>
-                            <input type="text"  id="album-name" placeholder="Enter your album name"/>
+                            <label>Album Name</label>
+                            <input
+                                type="text"
+                                id="album-name"
+                                placeholder="Enter your album name"
+                                maxLength="20"
+                                value={this.props.nameAlbum}
+                                onChange={this.props.onChangeName}
+                            />
                         </li>
                         <li>
-                            <label for="description-album">Description</label>
-                            <textarea rows="6" id="description-album" placeholder="Description your album"></textarea>
+                            <label>Description</label>
+                            <textarea
+                                rows="6"
+                                id="description-album"
+                                placeholder="Description your album"
+                                value={this.props.description}
+                                onChange={this.props.onChangeDescription}
+                            ></textarea>
                         </li>
                         <li>
                             <button>Done</button>

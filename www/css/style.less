@@ -43,6 +43,9 @@
     cursor: pointer;
     .album-description {
       display: none;
+      //visibility: hidden;
+      //opacity: 0;
+      //font-size: 1px;
     }
     .album-name {
 
@@ -52,13 +55,25 @@
     }
     &:hover .album-description {
       display: block;
+      //visibility: visible;
+      //opacity: 1;
+      transition: 1s;
       font-size: 16px;
     }
     &:hover .album-name {
       border-top: 1px solid white;
       border-bottom: 1px solid white;
     }
-
+    span {
+      display: none;
+    }
+    &:hover span {
+      display: block;
+      font-size:40px;
+      color:red;
+      margin-top: 5px;
+      border: 1px solid red;
+    }
   }
 
 }
@@ -90,6 +105,7 @@
           background-color: green;
           color: white;
           cursor: pointer;
+
         }
 
     }
@@ -107,13 +123,21 @@
   }
 
 }
-@media all and (max-width : 549px) {
+@media all and (max-width : 561px) {
   .grid {
     justify-content: center;
     flex-direction: column-reverse;
 
   }
+  .create-album {
+    order: 1;
+    display: flex;
+  }
 
+}
+
+.testnone {
+  display: none;
 }
 
 //.test {
