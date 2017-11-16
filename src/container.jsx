@@ -27,22 +27,30 @@ class LogicApp extends React.Component {
 
     handleNameChange(event){
         this.setState({albumName:event.target.value})
-        this.checkName(event);
+
+        this.removingSpacesInNameAlbum(event);
+        this.checkNameAlbum(event);
+        console.log(event.target.value);
     }
 
-    checkName (event) {
+    checkNameAlbum (event) {
+
         this.state.albums.some((item,i) => {
             let nameAlbum = item.name.toLowerCase();
-
             if(nameAlbum === event.target.value.toLowerCase()) {
                 this.setState({errorName:true},() => {console.log(this.state.errorName,i);})
                 return true;
             }
             this.setState({errorName:false},()=>{console.log(this.state.errorName);})
-
-
         })
+    }
 
+    // Метод который удаляет пробелы в поле с именем Альбома
+    removingSpacesInNameAlbum (event) {
+        let nameAlbum = event.target.value;
+        let arr = nameAlbum.split(' ');
+        let newName = arr.filter((item) => item != '').join(' ');
+        this.setState({albumName: newName})
 
     }
 
