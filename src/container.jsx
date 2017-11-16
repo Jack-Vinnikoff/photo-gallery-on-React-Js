@@ -7,34 +7,48 @@ class LogicApp extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            //Массив объектов где хранятся все созданные альбомы с описанием и именем
             albums:[{id:1,name:'first Album',description:'this is me first Album'}],
+            // элемент который сигнализирует об открытие модального окна с формой создания альбома
             isOpen:false,
+            //Имя нового альбома
             albumName:'',
+            // Опсиание для нового альбома
             albumDescription:'',
-            errors:false
-        }
+            // Проверка на ошибки в поле с именем нового альбома при создании
+            errorName:false,
+            // Проверка на ошибки в поле с описанием альбома при создании
+            errorDescription:false
+        };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.finishedAlbum = this.finishedAlbum.bind(this);
     }
 
     handleNameChange(event){
-        console.log(event.target.value);
         this.setState({albumName:event.target.value})
-        this.state.albums.forEach((item) => {
-            let nameAlbum=item.name.toLowerCase();
+        this.checkName(event);
+    }
+
+    checkName (event) {
+        this.state.albums.some((item,i) => {
+            let nameAlbum = item.name.toLowerCase();
+
             if(nameAlbum === event.target.value.toLowerCase()) {
-                alert('double Name');
+                this.setState({errorName:true},() => {console.log(this.state.errorName,i);})
+                return true;
             }
-            console.log(event.target.value);
-            console.log(nameAlbum);
+            this.setState({errorName:false},()=>{console.log(this.state.errorName);})
+
+
         })
+
+
     }
 
     handleDescriptionChange(event) {
         console.log(event.target.value);
         this.setState({albumDescription: event.target.value})
-        console.log(this.state.albumDescription);
     }
 
 
@@ -46,9 +60,9 @@ class LogicApp extends React.Component {
     }
     finishedAlbum (e) {
         e.preventDefault();
-        if(this.state.errors === false){
+        if(this.state.errorDescription === false){
             let newAlbum = this.state.albums.concat()
-            newAlbum.push({id : 1, name : this.state.albumName, description : this.state.albumDescription})
+            newAlbum.push({id : 2, name : this.state.albumName, description : this.state.albumDescription})
             this.setState({albums : newAlbum})
             console.log(newAlbum);
             this.createAlbum();

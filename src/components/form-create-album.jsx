@@ -33,7 +33,7 @@ class FormNewAlbum extends React.Component {
                             ></textarea>
                         </li>
                         <li>
-                            <button onClick={this.props.btnDone}>Done</button>
+                            <button onClick={this.props.btnDone} disabled={this.props.nameAlbum ==''?'disabled':''}>Done</button>
                         </li>
                         <li>
                             <button>Cancel</button>
