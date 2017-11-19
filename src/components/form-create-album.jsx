@@ -21,6 +21,8 @@ class FormNewAlbum extends React.Component {
                                 value={this.props.nameAlbum}
                                 onKeyUp={this.props.removingSpaces}
                                 onChange={this.props.onChangeName}
+                                ref={this.props.autoFocus}
+
                             />
                         </li>
                         <li>

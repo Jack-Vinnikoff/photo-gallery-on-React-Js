@@ -24,14 +24,19 @@ class LogicApp extends React.Component {
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.finishedAlbum = this.finishedAlbum.bind(this);
-        this.removingSpacesInNameAlbum = this.removingSpacesInNameAlbum.bind(this)
+        this.removingSpacesInNameAlbum = this.removingSpacesInNameAlbum.bind(this);
+        this.autoFocusInInput = this.autoFocusInInput.bind(this);
     }
 
+
+    // Фокусировка на Input с названием нового альбома
+    autoFocusInInput(event) {
+        this.state.isOpen ? event.focus() : false;
+    }
 
     handleNameChange(event){
 
         this.setState({albumName:event.target.value})
-        //this.removingSpacesInNameAlbum(event)
         this.checkNameAlbum(event);
         //console.log(event.target.value);
     }
@@ -102,6 +107,7 @@ class LogicApp extends React.Component {
                         onChangeDescription={this.handleDescriptionChange}
                         btnDone={this.finishedAlbum}
                         removingSpaces={this.removingSpacesInNameAlbum}
+                        autoFocus={this.autoFocusInInput}
                     />:''}
 
             </div>
