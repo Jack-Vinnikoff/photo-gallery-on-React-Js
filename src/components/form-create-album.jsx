@@ -19,6 +19,7 @@ class FormNewAlbum extends React.Component {
                                 placeholder="Enter your album name"
                                 maxLength="20"
                                 value={this.props.nameAlbum}
+                                onKeyUp={this.props.removingSpaces}
                                 onChange={this.props.onChangeName}
                             />
                         </li>
@@ -27,7 +28,7 @@ class FormNewAlbum extends React.Component {
                             <textarea
                                 rows="6"
                                 id="description-album"
-                                placeholder="Description your album"
+                                placeholder="Album description"
                                 value={this.props.description}
                                 onChange={this.props.onChangeDescription}
                             ></textarea>

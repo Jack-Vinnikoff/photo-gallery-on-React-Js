@@ -9,34 +9,37 @@ class LogicApp extends React.Component {
         this.state = {
             //Массив объектов где хранятся все созданные альбомы с описанием и именем
             albums:[{id:1,name:'first Album',description:'this is me first Album'}],
+
             // элемент который сигнализирует об открытие модального окна с формой создания альбома
             isOpen:false,
-            //Имя нового альбома
-            albumName:'',
-            // Опсиание для нового альбома
-            albumDescription:'',
-            // Проверка на ошибки в поле с именем нового альбома при создании
-            errorName:false,
-            // Проверка на ошибки в поле с описанием альбома при создании
-            errorDescription:false
+
+            albumName:'', //Имя нового альбома
+
+            albumDescription:'', // Опсиание для нового альбома
+
+            errorName:false,  // Проверка на ошибки в поле с именем нового альбома при создании
+
+            errorDescription:false // Проверка на ошибки в поле с описанием альбома при создании
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.finishedAlbum = this.finishedAlbum.bind(this);
+        this.removingSpacesInNameAlbum = this.removingSpacesInNameAlbum.bind(this)
     }
 
-    handleNameChange(event){
-        this.setState({albumName:event.target.value})
 
-        this.removingSpacesInNameAlbum(event);
+    handleNameChange(event){
+
+        this.setState({albumName:event.target.value})
+        //this.removingSpacesInNameAlbum(event)
         this.checkNameAlbum(event);
-        console.log(event.target.value);
+        //console.log(event.target.value);
     }
 
     checkNameAlbum (event) {
-
         this.state.albums.some((item,i) => {
             let nameAlbum = item.name.toLowerCase();
+            //console.log(nameAlbum);
             if(nameAlbum === event.target.value.toLowerCase()) {
                 this.setState({errorName:true},() => {console.log(this.state.errorName,i);})
                 return true;
@@ -45,13 +48,11 @@ class LogicApp extends React.Component {
         })
     }
 
-    // Метод который удаляет пробелы в поле с именем Альбома
+    //Метод который убирает пробел в самом начале поля Album Name
     removingSpacesInNameAlbum (event) {
-        let nameAlbum = event.target.value;
-        let arr = nameAlbum.split(' ');
-        let newName = arr.filter((item) => item != '').join(' ');
-        this.setState({albumName: newName})
-
+        if(this.state.albumName.length === 1 && event.keyCode === 32){
+            this.setState({albumName:''});
+        }
     }
 
     handleDescriptionChange(event) {
@@ -100,6 +101,7 @@ class LogicApp extends React.Component {
                         onChangeName={this.handleNameChange}
                         onChangeDescription={this.handleDescriptionChange}
                         btnDone={this.finishedAlbum}
+                        removingSpaces={this.removingSpacesInNameAlbum}
                     />:''}
 
             </div>
