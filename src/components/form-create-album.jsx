@@ -1,6 +1,14 @@
 import React from 'react';
 
 class FormNewAlbum extends React.Component {
+    constructor(props) {
+        super(props)
+        //
+    }
+    componentDidMount () {
+        this.props.autoFocus();
+    }
+
 
     render() {
         return (
@@ -21,8 +29,6 @@ class FormNewAlbum extends React.Component {
                                 value={this.props.nameAlbum}
                                 onKeyUp={this.props.removingSpaces}
                                 onChange={this.props.onChangeName}
-                                ref={this.props.autoFocus}
-
                             />
                         </li>
                         <li>
