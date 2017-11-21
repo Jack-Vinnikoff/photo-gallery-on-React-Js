@@ -30,34 +30,26 @@ class LogicApp extends React.Component {
 
 
     // Фокусировка на Input с названием нового альбома
-    autoFocusInInput(event) {
-        if (this.state.isOpen) {
-            document.getElementById('albumN').focus()
-            console.log(document.activeElement);
-
-
-            // albumN.onblur = () =>{
-            //     let newNameAlbum = this.state.albumName.trim();
-            //     this.setState({albumName:newNameAlbum})
-            // }
-        }
+    autoFocusInInput() {
+        document.getElementById('albumN').focus()
     }
 
     handleNameChange(event){
+        this.setState({albumName:event.target.value},()=> {
+            console.log(this.state.albumName)
+            this.checkNameAlbum(event);
+        })
 
-        this.setState({albumName:event.target.value})
-        this.checkNameAlbum(event);
-        console.log('====',this.state.albumName);
+        //console.log('====',this.state.albumName);
         //console.log(event.target.value);
 
     }
 
     checkNameAlbum (event) {
         this.state.albums.some((item,i) => {
-            let nameAlbum = item.name.toLowerCase();
-            //console.log(nameAlbum);
-            if(nameAlbum === event.target.value.toLowerCase()) {
-                this.setState({errorName:true},() => {console.log(this.state.errorName,i);})
+            let nameAlbum = this.state.albumName.toLowerCase();
+            if(nameAlbum === item.name.toLowerCase()) {
+                this.setState({errorName:true},() => {console.log(this.state.errorName);})
                 return true;
             }
             this.setState({errorName:false},()=>{console.log(this.state.errorName);})
@@ -69,13 +61,13 @@ class LogicApp extends React.Component {
         if(this.state.albumName.length === 1 && event.keyCode === 32){
             this.setState({albumName:''});
         }
-
         //Когда input Album Name выходит из фокуса, корректируются пробелы
         albumN.onblur = () =>{
             let newNameAlbum = this.state.albumName;
             let newArr = newNameAlbum.split(' ');
             let newName = newArr.filter((item) => item.length > 0).join(' ')
             this.setState({albumName:newName});
+            this.checkNameAlbum(event)
         }
     }
 
@@ -94,6 +86,8 @@ class LogicApp extends React.Component {
     }
     finishedAlbum (e) {
         e.preventDefault();
+        this.removingSpacesInNameAlbum(event);
+
         if(this.state.errorName === false){
             let newAlbum = this.state.albums.concat()
             newAlbum.push({id : 2, name : this.state.albumName, description : this.state.albumDescription})
@@ -128,6 +122,7 @@ class LogicApp extends React.Component {
                         btnDone={this.finishedAlbum}
                         removingSpaces={this.removingSpacesInNameAlbum}
                         autoFocus={this.autoFocusInInput}
+                        errorName={this.state.errorName}
                     />:''}
 
             </div>

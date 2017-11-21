@@ -1,14 +1,9 @@
 import React from 'react';
 
 class FormNewAlbum extends React.Component {
-    constructor(props) {
-        super(props)
-        //
-    }
     componentDidMount () {
         this.props.autoFocus();
     }
-
 
     render() {
         return (
@@ -30,6 +25,10 @@ class FormNewAlbum extends React.Component {
                                 onKeyUp={this.props.removingSpaces}
                                 onChange={this.props.onChangeName}
                             />
+                            <span
+                                className={this.props.errorName ?'':'testnone'}
+
+                            >Имя уже существует</span>
                         </li>
                         <li>
                             <label>Description</label>
