@@ -31,23 +31,25 @@ class LogicApp extends React.Component {
 
     // Фокусировка на Input с названием нового альбома
     autoFocusInInput(event) {
-        const focused = document.activeElement
         if (this.state.isOpen) {
-            document.getElementById('album-name').focus()
+            document.getElementById('albumN').focus()
+            console.log(document.activeElement);
 
+            //Когда input Album Name выходит из фокуса, корректируются пробелы, чтоб в конце слова не было лишних пробелов
+            albumN.onblur = () =>{
+                let newNameAlbum = this.state.albumName.trim();
+                this.setState({albumName:newNameAlbum})
+            }
         }
-        return false
     }
 
     handleNameChange(event){
-        if(this.autoFocusInInput()){
-            alert('Good');
-        }
-        console.log(this.props.nameAlbum);
-        console.log('===============',this.autoFocusInInput(this.props.autoFocus))
+
         this.setState({albumName:event.target.value})
         this.checkNameAlbum(event);
+        console.log('====',this.state.albumName);
         //console.log(event.target.value);
+
     }
 
     checkNameAlbum (event) {
@@ -67,11 +69,13 @@ class LogicApp extends React.Component {
         if(this.state.albumName.length === 1 && event.keyCode === 32){
             this.setState({albumName:''});
         }
+        console.log(document.activeElement);
 
     }
 
     handleDescriptionChange(event) {
         console.log(event.target.value);
+        console.log(document.activeElement);
         this.setState({albumDescription: event.target.value})
     }
 

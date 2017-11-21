@@ -23,7 +23,7 @@ class FormNewAlbum extends React.Component {
                             <label>Album Name</label>
                             <input
                                 type="text"
-                                id="album-name"
+                                id="albumN"
                                 placeholder="Enter your album name"
                                 maxLength="20"
                                 value={this.props.nameAlbum}
