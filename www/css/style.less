@@ -135,6 +135,77 @@
   }
 
 }
+// *************************** Модальное окно формы*****************************//
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.5);
+  pointer-events: none;
+  display: none;
+  z-index: 9999;
+  &:target {
+    display: block;
+    pointer-events: auto;
+  }
+  .popup {
+    width:500px;
+    position: relative;
+    margin: 10% auto;
+    padding: 20px;
+    background-color: darkgray;
+  }
+  .close {
+    width:30px;
+    height: 30px;
+    position: absolute;
+    color: brown;
+    font-size:20px;
+    top: 30px;
+    right: 15px;
+    text-decoration: none;
+    display: block;
+
+  }
+}
+
+// ****************************            *******//
+// ************************* Форма создания нового альбома ****************//
+.flex-outer{
+  max-width: 580px;
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 15px;
+  }
+
+  label {
+    padding: 8px;
+    font-weight: 300;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    flex: 1 0 120px;
+    max-width: 150px;
+  }
+  button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+  }
+}
+.flex-outer > li > label + *{
+  flex: 1 0 220px;
+}
+//****************************************************  //
+
 
 .testnone {
   display: none;
@@ -158,20 +229,7 @@
 //
 //}
 //
-//.modal-window {
-//  position: absolute;
-//  display: flex;
-//  width: 100%;
-//  height: 100%;
-//  justify-content: center;
-//  align-items: center;
-//  .bg-window {
-//    opacity: 0.7;
-//    background-color: black;
-//    width: 100%;
-//    height: 100%;
-//    z-index: 10;
-//  }
+
 //  .modal-window-form {
 //    position: inherit;
 //    background-color: wheat;

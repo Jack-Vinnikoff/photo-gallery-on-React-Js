@@ -6,21 +6,15 @@ class FormNewAlbum extends React.Component {
         this.props.autoFocus();
     }
 
-    test (id) {
-        this.props.removingSpaces(id)
-    }
 
     render() {
         return ReactDom.createPortal (
-            <div className="modal-window">
-                <div className="bg-window">
-                </div>
-                <div className="modal-window-form">
+            <div className="popup">
+                <a href="#" className="close">X</a>
                 <form>
-
                     <ul className="flex-outer">
                         <li>
-                            <label>Album Name</label>
+                            <label htmlFor="albumN">Album Name</label>
                             <input
                                 type="text"
                                 id="albumN"
@@ -37,13 +31,12 @@ class FormNewAlbum extends React.Component {
                             >Имя уже существует</span>
                         </li>
                         <li>
-                            <label>Description</label>
+                            <label htmlFor="description-album">Description</label>
                             <textarea
                                 rows="6"
                                 id="description-album"
                                 placeholder="Album description"
                                 value={this.props.description}
-                                onKeyUp={this.props.removingSpaces}
                                 onChange={this.props.onChangeDescription}
 
                             ></textarea>
@@ -52,16 +45,11 @@ class FormNewAlbum extends React.Component {
                             <button
                                 onClick={this.props.btnDone}
                                 disabled={this.props.nameAlbum ===''||this.props.errorName?'disabled':''}
-                            >Done
+                            >Create
                             </button>
                         </li>
-                        <li>
-                            <button>Cancel</button>
-                        </li>
                     </ul>
-
                 </form>
-                </div>
             </div>,
             document.getElementById('root')
         );

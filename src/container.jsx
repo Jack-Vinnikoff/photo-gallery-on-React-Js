@@ -54,7 +54,7 @@ class LogicApp extends React.Component {
     }
 
     //Метод который убирает пробел лишнее пробелы в поле Album Name
-    removingSpacesInNameAlbum (id) {
+    removingSpacesInNameAlbum (event) {
         if(this.state.albumName.length === 1 && event.keyCode === 32){
             this.setState({albumName:''});
         }
