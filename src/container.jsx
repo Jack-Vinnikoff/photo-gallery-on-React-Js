@@ -40,9 +40,6 @@ class LogicApp extends React.Component {
             this.checkNameAlbum(event);
         })
 
-        //console.log('====',this.state.albumName);
-        //console.log(event.target.value);
-
     }
 
     checkNameAlbum (event) {
@@ -57,7 +54,7 @@ class LogicApp extends React.Component {
     }
 
     //Метод который убирает пробел лишнее пробелы в поле Album Name
-    removingSpacesInNameAlbum (event) {
+    removingSpacesInNameAlbum (id) {
         if(this.state.albumName.length === 1 && event.keyCode === 32){
             this.setState({albumName:''});
         }
@@ -86,8 +83,6 @@ class LogicApp extends React.Component {
     }
     finishedAlbum (e) {
         e.preventDefault();
-        this.removingSpacesInNameAlbum(event);
-
         if(this.state.errorName === false){
             let newAlbum = this.state.albums.concat()
             newAlbum.push({id : 2, name : this.state.albumName, description : this.state.albumDescription})

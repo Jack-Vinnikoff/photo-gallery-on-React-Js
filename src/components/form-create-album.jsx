@@ -1,12 +1,17 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 
 class FormNewAlbum extends React.Component {
     componentDidMount () {
         this.props.autoFocus();
     }
 
+    test (id) {
+        this.props.removingSpaces(id)
+    }
+
     render() {
-        return (
+        return ReactDom.createPortal (
             <div className="modal-window">
                 <div className="bg-window">
                 </div>
@@ -25,6 +30,7 @@ class FormNewAlbum extends React.Component {
                                 onKeyUp={this.props.removingSpaces}
                                 onChange={this.props.onChangeName}
                             />
+                            <br />
                             <span
                                 className={this.props.errorName ?'':'testnone'}
 
@@ -37,11 +43,17 @@ class FormNewAlbum extends React.Component {
                                 id="description-album"
                                 placeholder="Album description"
                                 value={this.props.description}
+                                onKeyUp={this.props.removingSpaces}
                                 onChange={this.props.onChangeDescription}
+
                             ></textarea>
                         </li>
                         <li>
-                            <button onClick={this.props.btnDone} disabled={this.props.nameAlbum ==''?'disabled':''}>Done</button>
+                            <button
+                                onClick={this.props.btnDone}
+                                disabled={this.props.nameAlbum ===''||this.props.errorName?'disabled':''}
+                            >Done
+                            </button>
                         </li>
                         <li>
                             <button>Cancel</button>
@@ -50,8 +62,9 @@ class FormNewAlbum extends React.Component {
 
                 </form>
                 </div>
-            </div>
-        )
+            </div>,
+            document.getElementById('root')
+        );
     }
 }
 
