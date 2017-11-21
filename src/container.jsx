@@ -35,11 +35,11 @@ class LogicApp extends React.Component {
             document.getElementById('albumN').focus()
             console.log(document.activeElement);
 
-            //Когда input Album Name выходит из фокуса, корректируются пробелы, чтоб в конце слова не было лишних пробелов
-            albumN.onblur = () =>{
-                let newNameAlbum = this.state.albumName.trim();
-                this.setState({albumName:newNameAlbum})
-            }
+
+            // albumN.onblur = () =>{
+            //     let newNameAlbum = this.state.albumName.trim();
+            //     this.setState({albumName:newNameAlbum})
+            // }
         }
     }
 
@@ -64,13 +64,19 @@ class LogicApp extends React.Component {
         })
     }
 
-    //Метод который убирает пробел в самом начале поля Album Name
+    //Метод который убирает пробел лишнее пробелы в поле Album Name
     removingSpacesInNameAlbum (event) {
         if(this.state.albumName.length === 1 && event.keyCode === 32){
             this.setState({albumName:''});
         }
-        console.log(document.activeElement);
 
+        //Когда input Album Name выходит из фокуса, корректируются пробелы
+        albumN.onblur = () =>{
+            let newNameAlbum = this.state.albumName;
+            let newArr = newNameAlbum.split(' ');
+            let newName = newArr.filter((item) => item.length > 0).join(' ')
+            this.setState({albumName:newName});
+        }
     }
 
     handleDescriptionChange(event) {
@@ -88,7 +94,7 @@ class LogicApp extends React.Component {
     }
     finishedAlbum (e) {
         e.preventDefault();
-        if(this.state.errorDescription === false){
+        if(this.state.errorName === false){
             let newAlbum = this.state.albums.concat()
             newAlbum.push({id : 2, name : this.state.albumName, description : this.state.albumDescription})
             this.setState({albums : newAlbum})
